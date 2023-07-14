@@ -28,8 +28,7 @@ module "postgresql_flexible_server" {
 
   # Optional
   high_availability = {
-    mode                      = "SameZone" # Defaults to SameZone
-    standby_availability_zone = "Zone 1"   # Defaults to null
+    mode = "SameZone" # Defaults to null
   }
 
   # Optional
