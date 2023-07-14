@@ -21,8 +21,7 @@ resource "azurerm_postgresql_flexible_server" "main" {
     for_each = var.high_availability != null ? toset([var.high_availability]) : toset([])
 
     content {
-      mode                      = var.high_availability.mode
-      standby_availability_zone = var.high_availability.standby_availability_zone
+      mode = var.high_availability.mode
     }
   }
 
@@ -41,6 +40,11 @@ resource "azurerm_postgresql_flexible_server" "main" {
       condition     = var.private_dns_zone_id != null && var.delegated_subnet_id != null || var.private_dns_zone_id == null && var.delegated_subnet_id == null
       error_message = "var.private_dns_zone_id and var.delegated_subnet_id should either both be set or none of them."
     }
+
+    ignore_changes = [
+      zone,
+      high_availability.0.standby_availability_zone
+    ]
   }
 }
 

@@ -87,12 +87,10 @@ variable "delegated_subnet_id" {
 
 variable "high_availability" {
   description = <<EOT
-  <br><b>mode:</b> The high availability mode for the PostgreSQL Flexible Server. Possible value are SameZone or ZoneRedundant. Defaults to SameZone.
-  <br><b>standby_availability_zone:</b> Specifies the Availability Zone in which the standby Flexible Server should be located. Defaults to null.
+  <br><b>mode:</b> The high availability mode for the PostgreSQL Flexible Server. Possible value are SameZone or ZoneRedundant.
 EOT
   type        = object({
-    mode                      = optional(string, "SameZone")
-    standby_availability_zone = optional(string)
+    mode = optional(string)
   })
   default = null
 }
