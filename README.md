@@ -50,9 +50,9 @@ module "postgresql_flexible_server" {
   # Optional
   firewall_rules = [
     {
-      name             = "Name of a firewall rule"     # Defaults to null
-      start_ip_address = "122.122.0.0" # Defaults to null
-      end_ip_address   = "122.122.0.0" # Defaults to null
+      name             = "Name of a firewall rule" # Defaults to null
+      start_ip_address = "122.122.0.0"             # Defaults to null
+      end_ip_address   = "122.122.0.0"             # Defaults to null
     }
   ]
 

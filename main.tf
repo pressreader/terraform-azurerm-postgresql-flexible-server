@@ -48,11 +48,11 @@ resource "azurerm_postgresql_flexible_server_configuration" "main" {
   for_each = {for v in var.configurations : v["name"] => v}
 
   server_id = azurerm_postgresql_flexible_server.main.id
-  name      = each.key
-  value     = each.value
+  name      = each.value["name"]
+  value     = each.value["value"]
 }
 
-resource "azurerm_postgresql_flexible_server_firewall_rule" "this" {
+resource "azurerm_postgresql_flexible_server_firewall_rule" "main" {
   for_each = {for v in var.firewall_rules : v["name"] => v}
 
   server_id        = azurerm_postgresql_flexible_server.main.id
