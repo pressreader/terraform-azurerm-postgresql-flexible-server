@@ -13,9 +13,9 @@ module "postgresql_flexible_server" {
   resource_group_name = "Resource group of the PostgreSQL Flexible Server"
   tags                = "Tags of the PostgreSQL Flexible Server"
 
-  sku_name   = "SKU Name for the PostgreSQL Flexible Server"
-  storage_mb = 32768
-  version    = 14
+  sku_name           = "SKU Name for the PostgreSQL Flexible Server"
+  storage_mb         = 32768
+  postgresql_version = 14
 
   administrator_login    = "Username"
   administrator_password = "Password"

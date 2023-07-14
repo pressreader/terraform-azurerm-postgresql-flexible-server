@@ -36,13 +36,13 @@ variable "storage_mb" {
   }
 }
 
-variable "version" {
+variable "postgresql_version" {
   description = "The version of PostgreSQL Flexible Server to use."
   type        = number
 
   validation {
-    condition     = contains([11, 12, 13, 14], var.version)
-    error_message = "The version value must be one of 11, 12, 13 and 14"
+    condition     = contains([11, 12, 13, 14], var.postgresql_version)
+    error_message = "The postgresql_version value must be one of 11, 12, 13 and 14"
   }
 }
 
