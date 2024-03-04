@@ -41,7 +41,7 @@ variable "postgresql_version" {
   type        = number
 
   validation {
-    condition     = contains([11, 12, 13, 14], var.postgresql_version)
+    condition     = contains([11, 12, 13, 14, 15, 16], var.postgresql_version)
     error_message = "The postgresql_version value must be one of 11, 12, 13 and 14"
   }
 }
