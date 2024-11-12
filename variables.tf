@@ -84,12 +84,16 @@ variable "delegated_subnet_id" {
   type        = string
   default     = null
 }
-
+variable "public_network_access_enabled" {
+  description = "(Optional) Specifies whether this PostgreSQL Flexible Server is publicly accessible. Defaults to true "
+  type        = bool
+  default     = true
+}
 variable "high_availability" {
   description = <<EOT
   <br><b>mode:</b> The high availability mode for the PostgreSQL Flexible Server. Possible value are SameZone or ZoneRedundant.
 EOT
-  type        = object({
+  type = object({
     mode = optional(string)
   })
   default = null
@@ -101,7 +105,7 @@ variable "maintenance_window" {
   <br><b>start_hour:</b> The start hour for maintenance window. Defaults to 0.
   <br><b>start_minute:</b> The start minute for maintenance window. Defaults to 0.
 EOT
-  type        = object({
+  type = object({
     day_of_week  = optional(number, 0)
     start_hour   = optional(number, 0)
     start_minute = optional(number, 0)
@@ -114,7 +118,7 @@ variable "configurations" {
   <br><b>name:</b> Specifies the name of the PostgreSQL Configuration, which needs to be a valid PostgreSQL configuration name. Changing this forces a new resource to be created.
   <br><b>value:</b> Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values.
 EOT
-  type        = list(object({
+  type = list(object({
     name  = optional(string)
     value = optional(string)
   }))
@@ -127,7 +131,7 @@ variable "firewall_rules" {
   <br><b>start_ip_address:</b> The Start IP Address associated with this PostgreSQL Flexible Server Firewall Rule.
   <br><b>end_ip_address:</b> The End IP Address associated with this PostgreSQL Flexible Server Firewall Rule.
 EOT
-  type        = list(object({
+  type = list(object({
     name             = optional(string)
     start_ip_address = optional(string)
     end_ip_address   = optional(string)
@@ -141,7 +145,7 @@ variable "databases" {
   <br><b>charset:</b> Specifies the Charset for the Azure PostgreSQL Flexible Server Database, which needs to be a valid PostgreSQL Charset. Defaults to utf8. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   <br><b>collation:</b> Specifies the Collation for the Azure PostgreSQL Flexible Server Database, which needs to be a valid PostgreSQL Collation. Defaults to en_US.utf8. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
 EOT
-  type        = list(object({
+  type = list(object({
     name      = optional(string)
     charset   = optional(string, "utf8")
     collation = optional(string, "en_US.utf8")
@@ -154,7 +158,7 @@ variable "role_assignments" {
   <br><b>principal_id:</b> The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created.
   <br><b>role_definition_name:</b> The name of a built-in Role. Changing this forces a new resource to be created. Conflicts with role_definition_id.
 EOT
-  type        = list(object({
+  type = list(object({
     principal_id         = optional(string)
     role_definition_name = optional(string)
   }))
