@@ -17,6 +17,7 @@ resource "azurerm_postgresql_flexible_server" "main" {
   delegated_subnet_id = var.delegated_subnet_id
   private_dns_zone_id = var.private_dns_zone_id
 
+  public_network_access_enabled = var.public_network_access_enabled
   dynamic "high_availability" {
     for_each = var.high_availability != null ? toset([var.high_availability]) : toset([])
 
@@ -49,7 +50,7 @@ resource "azurerm_postgresql_flexible_server" "main" {
 }
 
 resource "azurerm_postgresql_flexible_server_configuration" "main" {
-  for_each = {for v in var.configurations : v["name"] => v}
+  for_each = { for v in var.configurations : v["name"] => v }
 
   server_id = azurerm_postgresql_flexible_server.main.id
   name      = each.value["name"]
@@ -57,7 +58,7 @@ resource "azurerm_postgresql_flexible_server_configuration" "main" {
 }
 
 resource "azurerm_postgresql_flexible_server_firewall_rule" "main" {
-  for_each = {for v in var.firewall_rules : v["name"] => v}
+  for_each = { for v in var.firewall_rules : v["name"] => v }
 
   server_id        = azurerm_postgresql_flexible_server.main.id
   name             = each.value["name"]
@@ -66,7 +67,7 @@ resource "azurerm_postgresql_flexible_server_firewall_rule" "main" {
 }
 
 resource "azurerm_postgresql_flexible_server_database" "main" {
-  for_each = {for v in var.databases : v["name"] => v}
+  for_each = { for v in var.databases : v["name"] => v }
 
   server_id = azurerm_postgresql_flexible_server.main.id
   name      = each.value["name"]
