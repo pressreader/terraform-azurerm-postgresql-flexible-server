@@ -35,7 +35,6 @@ variable "storage_mb" {
     error_message = "The storage_mb value must be one of 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, and 16777216"
   }
 }
-
 variable "auto_growth_enabled" {
   description = "Is the storage auto grow for PostgreSQL Flexible Server enabled?"
   type        = bool
