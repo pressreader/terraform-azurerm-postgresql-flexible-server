@@ -36,6 +36,11 @@ variable "storage_mb" {
   }
 }
 
+variable "auto_growth_enabled" {
+  description = "Is the storage auto grow for PostgreSQL Flexible Server enabled?"
+  type        = bool
+  default     = null
+}
 variable "postgresql_version" {
   description = "The version of PostgreSQL Flexible Server to use."
   type        = number
