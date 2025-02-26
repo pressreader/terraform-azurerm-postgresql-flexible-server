@@ -4,9 +4,10 @@ resource "azurerm_postgresql_flexible_server" "main" {
   resource_group_name = var.resource_group_name
   tags                = var.tags
 
-  sku_name   = var.sku_name
-  storage_mb = var.storage_mb
-  version    = var.postgresql_version
+  sku_name          = var.sku_name
+  storage_mb        = var.storage_mb
+  auto_grow_enabled = var.auto_growth_enabled
+  version           = var.postgresql_version
 
   administrator_login    = var.administrator_login
   administrator_password = var.administrator_password
